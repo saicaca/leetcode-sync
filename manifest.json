@@ -1,0 +1,27 @@
+{
+  "name": "LeetCode Sync",
+  "description": "Sync the codes",
+  "version": "0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "cookies",
+    "webRequest",
+    "declarativeNetRequest"
+  ],
+  "declarative_net_request" : {
+    "rule_resources" : [{
+      "id": "ruleset",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+
+  "host_permissions": [
+    "*://leetcode-cn.com/*",
+    "*://leetcode.com/*"
+  ],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  }
+}

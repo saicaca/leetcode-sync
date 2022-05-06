@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {"header": "Referer", "operation": "set", "value": "https://leetcode.com/"}
+      ]
+    },
+    "condition": {"urlFilter": "https://leetcode.com/problems/*/submit/"}
+  }
+]
