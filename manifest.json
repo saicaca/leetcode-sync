@@ -1,7 +1,7 @@
 {
   "name": "LeetCode Sync",
   "description": "Sync the codes",
-  "version": "0.1",
+  "version": "0.2.0",
   "manifest_version": 3,
   "permissions": [
     "cookies",
@@ -15,7 +15,13 @@
       "path": "rules.json"
     }]
   },
-
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode-cn.com/problems/*/"],
+      "css": ["problems-page.css"],
+      "js": ["problems-page.js"]
+    }
+  ],
   "host_permissions": [
     "*://leetcode-cn.com/*",
     "*://leetcode.com/*"

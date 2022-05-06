@@ -1,7 +1,15 @@
+let tabId = 0
+
 function getToken() {
     return chrome.cookies.get({
         "name": "csrftoken",
         "url": "https://leetcode.com/"
+    })
+}
+
+async function sendStatus(status) {
+    chrome.tabs.sendMessage(tabId, {
+        "status": status
     })
 }
 
@@ -14,12 +22,24 @@ async function sendRequest(url, originalBody) {
             'x-csrftoken': tokenStr,
         },
         body: originalBody
-    }).catch(error => console.log('Error: ' + error))
+    })
+        .then(response => {
+            if(response.status === 200)
+                sendStatus("success")
+            else
+                sendStatus("fail")
+        })
+        .catch(error => {
+            sendStatus("fail")
+            console.log('Error: ' + error)
+        })
 }
 
 async function addRequestListener() {
     let callback = function (details) {
         console.log(details)
+        tabId = details.tabId
+        sendStatus("sending")
         let url = details.url
         let requestBody = decodeURIComponent(String.fromCharCode.apply(
             null, new Uint8Array(details.requestBody.raw[0].bytes))

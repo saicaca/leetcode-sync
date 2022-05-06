@@ -1,0 +1,34 @@
+#sync-icon {
+    width: 32px;
+    height: 32px;
+    fill: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+#sync-icon.sending {
+    fill: #ffd161;
+    -webkit-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+#sync-icon.success {
+    fill: #2db55d;
+}
+#sync-icon.fail {
+    fill: #d85e5e;
+}
+
+#sync-icon svg {
+    width: 16px;
+}
+
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
