@@ -44,11 +44,11 @@ async function addRequestListener() {
         let requestBody = decodeURIComponent(String.fromCharCode.apply(
             null, new Uint8Array(details.requestBody.raw[0].bytes))
         )
-        let newUrl = url.replace("leetcode-cn.com", "leetcode.com")
+        let newUrl = url.replace("leetcode.cn", "leetcode.com")
         sendRequest(newUrl, requestBody)
     }
     let filter = {
-        "urls": ["https://leetcode-cn.com/problems/*/submit/"]
+        "urls": ["https://leetcode.cn/problems/*/submit/"]
     }
     let opt_extraInfoSpec = ['requestBody']
     chrome.webRequest.onBeforeRequest.addListener(
